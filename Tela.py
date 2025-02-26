@@ -1,14 +1,17 @@
 import tkinter as tk
 from tkinter import messagebox
-from crud import create_user,read_users, update_user,delete_user
+from crud import create_user,read_users,update_user,delete_user
+
+
 
 class CRUDApp:
+    
     def __init__(self,root):
         self.root= root
         self.root.title("CRUD USUARIOS")
 
         #Criação de WIDGETS
-        self.creat_widgets()
+        self.create_widgets()
 
     def create_widgets(self):
         #Labels
@@ -86,4 +89,16 @@ class CRUDApp:
         else:
             messagebox.showerror("Error","Todos os campos são obrigatórios")
 
-        
+    def delete_user(self):
+        user_id = self.user_id_entry.get()
+        if user_id:
+            delete_user(user_id)
+            self.user_id_entry.delete(0,tk.END)
+            messagebox.showerror("Success","Usuario excluido com sucesso!")
+        else:
+            messagebox.showerror("Error","ID do usuario é obrigatório")
+
+if __name__=="__main__":
+    root = tk.Tk()
+    app = CRUDApp(root)
+    root.mainloop()
