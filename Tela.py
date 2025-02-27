@@ -51,6 +51,7 @@ class CRUDApp:
         tk.Button(self.root, text = "Alterar usuário", command = self.update_user).grid(row = 7, column = 0, columnspan = 1)
         tk.Button(self.root, text = "Excluir usuário", command = self.delete_user).grid(row = 7, column = 1, columnspan = 1)
 
+        #TEXTO PARA LISTAR USUARIO:
         self.text_area = tk.Text(self.root,height=10,width=80)
         self.text_area.grid(row=10,column=0,columnspan=4)
 
