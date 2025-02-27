@@ -1,11 +1,11 @@
 import mysql.connector
-from config import MYSQL_HOST,MYSQL_USER,MTSQL_PASSWORD,MYSQL_DATABASE
+from config import MYSQL_HOST,MYSQL_USER,MYSQL_PASSWORD,MYSQL_DATABASE
 
 def get_connection():
     return mysql.connector.connect(
         host = MYSQL_HOST,
         user = MYSQL_USER,
-        password = MTSQL_PASSWORD,
+        password = MYSQL_PASSWORD,
         database = MYSQL_DATABASE
     )
 
@@ -24,7 +24,6 @@ def read_users():
     query = "SELECT * FROM usuario"
     cursor.execute(query)
     result = cursor.fetchall()
-    conn.commit()
     cursor.close()
     conn.close()
     return result
@@ -32,7 +31,7 @@ def read_users():
 def update_user(user_id,nome,telefone,email,usuario,senha):
     conn = get_connection()
     cursor = conn.cursor()
-    query = "UPDATE usuario SET nome=%s,telefone=%s,email=%s,senha=%s WHERE idusuario = %s)"
+    query = "UPDATE usuario SET nome=%s,telefone=%s,email=%s,usuario=%s,senha=%s WHERE idusuario = %s)"
     cursor.execute(query,(nome,telefone,email,usuario,senha,user_id))
     conn.commit()
     cursor.close()
