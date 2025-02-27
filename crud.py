@@ -41,7 +41,7 @@ def update_user(user_id,nome,telefone,email,usuario,senha):
 def delete_user(user_id):
     conn = get_connection()
     cursor = conn.cursor()
-    query = "DELE FROM usuario WHERE idusuario = %s)"
+    query = "DELETE FROM usuario WHERE idusuario = %s)"
     cursor.execute(query,(user_id))
     conn.commit()
     cursor.close()
